@@ -3051,9 +3051,12 @@ powerpc-*-eabialtivec*)
 	;;
 powerpc-*-eabi*)
 	tm_file="${tm_file} elfos.h gnu-user.h usegas.h freebsd-spec.h newlib-stdint.h rs6000/sysv4.h rs6000/eabi.h"
-	extra_options="${extra_options} rs6000/sysv4.opt"
+	extra_options="${extra_options} rs6000/sysv4.opt devkitpro.opt"
 	tmake_file="rs6000/t-fprules rs6000/t-ppcgas rs6000/t-ppccomm"
 	use_gcc_stdint=wrap
+	case ${enable_threads} in
+	  "" | yes | posix) thread_file='posix' ;;
+	esac
 	;;
 powerpc-*-rtems*)
 	tm_file="rs6000/biarch64.h ${tm_file} elfos.h gnu-user.h freebsd-spec.h newlib-stdint.h rs6000/sysv4.h rs6000/rtems.h rtems.h"
