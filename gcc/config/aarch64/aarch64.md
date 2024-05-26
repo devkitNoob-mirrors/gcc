@@ -7710,9 +7710,20 @@
 (define_insn "aarch64_load_tp_hard"
   [(set (match_operand:DI 0 "register_operand" "=r")
 	(unspec:DI [(const_int 0)] UNSPEC_TLS))]
-  ""
+  "TARGET_HARD_TP"
   "* return aarch64_output_load_tp (operands[0]);"
   [(set_attr "type" "mrs")]
+)
+
+(define_insn "aarch64_load_tp_soft"
+  [(set (reg:DI 0) (unspec:DI [(const_int 0)] UNSPEC_TLS))
+   (clobber (reg:DI IP0_REGNUM))
+   (clobber (reg:DI IP1_REGNUM))
+   (clobber (reg:DI LR_REGNUM))
+   (clobber (reg:CC CC_REGNUM))]
+  "TARGET_SOFT_TP"
+  "bl\\t__aarch64_read_tp\\t// aarch64_load_tp_soft"
+  [(set_attr "type" "branch")]
 )
 
 ;; The TLS ABI specifically requires that the compiler does not schedule
