@@ -91,7 +91,8 @@ enum aarch64_tp_reg {
   AARCH64_TPIDR_EL1 = 1,
   AARCH64_TPIDR_EL2 = 2,
   AARCH64_TPIDR_EL3 = 3,
-  AARCH64_TPIDRRO_EL0 = 4
+  AARCH64_TPIDRRO_EL0 = 4,
+  AARCH64_TP_SOFT = 5
 };
 
 /* SVE vector register sizes.  */

@@ -1436,6 +1436,10 @@ typedef struct
 /* Check TLS Descriptors mechanism is selected.  */
 #define TARGET_TLS_DESC (aarch64_tls_dialect == TLS_DESCRIPTORS)
 
+/* Check selected thread pointer access sequence to use.  */
+#define TARGET_HARD_TP (aarch64_tpidr_reg != AARCH64_TP_SOFT)
+#define TARGET_SOFT_TP (aarch64_tpidr_reg == AARCH64_TP_SOFT)
+
 extern enum aarch64_code_model aarch64_cmodel;
 
 /* When using the tiny addressing model conditional and unconditional branches
