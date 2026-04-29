@@ -27,7 +27,7 @@
     do {                                        \
         builtin_define ("__DEVKITPRO__");       \
         builtin_define ("__DEVKITARM__");       \
-        TARGET_BPABI_CPP_BUILTINS();
+        TARGET_BPABI_CPP_BUILTINS();            \
     } while (0)
 
 
